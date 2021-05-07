@@ -1,0 +1,14 @@
+stages:
+  - build
+
+build_job:
+  stage: build
+  image: maven:3-jdk-8
+  before_script:
+    - mvn -v
+  script:
+    - mvn clean install -DskipTests
+  only:
+    - master
+  except:
+    - pushes
